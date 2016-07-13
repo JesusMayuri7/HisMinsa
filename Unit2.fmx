@@ -1,0 +1,133 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 535
+  ClientWidth = 916
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Size.Width = 916.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    Align = Top
+    Position.Y = 40.000000000000000000
+    Size.Width = 916.000000000000000000
+    Size.Height = 120.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Position.X = 584.000000000000000000
+    Position.Y = 192.000000000000000000
+    TabOrder = 6
+    Text = 'Button1'
+    OnClick = Button1Click
+  end
+  object Grid1: TGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = -72.000000000000000000
+    Position.Y = 160.000000000000000000
+    Size.Width = 545.000000000000000000
+    Size.Height = 369.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    OnGetValue = Grid1GetValue
+    Viewport.Width = 541.000000000000000000
+    Viewport.Height = 344.000000000000000000
+  end
+  object Button2: TButton
+    Position.X = 592.000000000000000000
+    Position.Y = 256.000000000000000000
+    TabOrder = 17
+    Text = 'Button2'
+    OnClick = Button2Click
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'text/html'
+    Left = 384
+    Top = 88
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <
+      item
+        name = 'Name'
+        Value = 'NICK'
+      end>
+    Resource = 
+      'hisminsa/his/his?_dc=&nrolote=&nrohojahis=&idanio=2016&idmes=06&' +
+      'param=&idturno=&idestablecimiento=2918&C=HOJAHIS&S=CABECERAGETLI' +
+      'ST&idflag=CP&page=1&start=0&limit=25'
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 256
+    Top = 80
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'UTF-8, *;q=0.8'
+    BaseURL = 'http://websalud.minsa.gob.pe'
+    Params = <>
+    HandleRedirects = True
+    RaiseExceptionOn500 = False
+    Left = 152
+    Top = 80
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=D:\Jesus\WebMinsa\Win32\Debug\webminsa.db'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    Left = 328
+    Top = 240
+  end
+  object fdlote: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'INSERT INTO lote (dni,nombres,turno,servicio,hoja,lote,anio,mes)' +
+        ' VALUES (:dni,:nombres,:turno,:servicio,:hoja,:lote,:anio,:mes)')
+    Left = 328
+    Top = 312
+    ParamData = <
+      item
+        Name = 'DNI'
+        ParamType = ptInput
+      end
+      item
+        Name = 'NOMBRES'
+        ParamType = ptInput
+      end
+      item
+        Name = 'TURNO'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SERVICIO'
+        ParamType = ptInput
+      end
+      item
+        Name = 'HOJA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'LOTE'
+        ParamType = ptInput
+      end
+      item
+        Name = 'ANIO'
+        ParamType = ptInput
+      end
+      item
+        Name = 'MES'
+        ParamType = ptInput
+      end>
+  end
+end
